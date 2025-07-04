@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sai Venna - Writing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #e5e5e5;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 12rem;
+      padding: 3rem 1.5rem;
+    }
+    .main-content {
+      flex-grow: 1;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 3rem 1rem;
+    }
+    @media (max-width: 640px) {
+      .container {
+        flex-direction: column;
+        max-width: 100%;
+      }
+      .sidebar {
+        width: 100%;
+        padding: 0;
+      }
+      .sidebar .nav-tabs {
+        background-color: #2d2d2d;
+        border-bottom: 1px solid #3a3a3a;
+        padding: 0.5rem 1rem;
+        text-align: center;
+      }
+      .sidebar .nav-tabs ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        align-items: baseline; /* Changed to baseline for level alignment */
+        margin: 0;
+        padding: 0;
+      }
+      .sidebar .nav-tabs ul li a {
+        padding: 0.25rem 0; /* Uniform vertical padding to stabilize height */
+      }
+      .main-content {
+        padding: 1rem;
+        max-width: 100%;
+      }
+    }
+    .article-card {
+      background-color: #2d2d2d;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav class="nav-tabs">
+        <ul class="flex flex-col space-y-4">
+          <li><a href="index.html" class="text-lg hover:underline">Home</a></li>
+          <li><a href="projects.html" class="text-lg hover:underline">Projects</a></li>
+          <li><a href="writing.html" class="text-lg hover:underline">Writing</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section>
+        <h1 class="text-6xl font-bold mb-12">Writing</h1>
+        <div class="space-y-8">
+          <div>
+            <div class="space-y-6">
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">The Dance Between Tenacity and Pragmatism</p>
+                <p class="text-sm text-gray-400 mb-2">June 2025</p>
+                <p class="text-lg">A reflection on balancing persistence with practical decision-making in personal and professional pursuits.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">So I made an app.</p>
+                <p class="text-sm text-gray-400 mb-2">May 2025</p>
+                <p class="text-lg">A discussion about the process and challenges of developing an app over the past month.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Reflection: FRC</p>
+                <p class="text-sm text-gray-400 mb-2">April 2025</p>
+                <p class="text-lg">A personal take on experiences and lessons learned from participating in the FIRST Robotics Competition.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Progress on My Version of TARS</p>
+                <p class="text-sm text-gray-400 mb-2">March 2025</p>
+                <p class="text-lg">An update on building a robot inspired by Interstellar’s TARS, detailing design and progress.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Creating a Linearly Actuated Robot Arm Pt. 2</p>
+                <p class="text-sm text-gray-400 mb-2">February 2025</p>
+                <p class="text-lg">The second part of a series on designing and constructing a robot arm with linear actuation.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Creating a Linearly Actuated Robot Arm Pt. 1</p>
+                <p class="text-sm text-gray-400 mb-2">January 2025</p>
+                <p class="text-lg">The first part of a series, exploring the initial design and concepts for a linearly actuated robot arm.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Quadruped Robot Inspired by Interstellar’s TARS</p>
+                <p class="text-sm text-gray-400 mb-2">December 2024</p>
+                <p class="text-lg">A project overview of a quadruped robot modeled after the TARS robot from Interstellar.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Using Object Detection to Allow Robots to Be More Adaptive</p>
+                <p class="text-sm text-gray-400 mb-2">November 2024</p>
+                <p class="text-lg">An exploration of how object detection enhances robotic adaptability in dynamic environments.</p>
+              </div>
+              <div class="article-card">
+                <p class="text-2xl font-bold mb-2">Exploring Environments Beyond Imagination</p>
+                <p class="text-sm text-gray-400 mb-2">October 2024</p>
+                <p class="text-lg">A look at how soft robotics and AI are transforming exploration in challenging terrains.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
