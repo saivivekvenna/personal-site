@@ -38,7 +38,6 @@
         padding: 0;
       }
       .sidebar .nav-tabs {
-        background-color: #2d2d2d;
         border-bottom: 1px solid #3a3a3a;
         padding: 0.5rem 1rem;
         text-align: center;
@@ -48,7 +47,7 @@
         flex-direction: row;
         justify-content: center;
         gap: 1.5rem;
-        align-items: baseline; /* Changed to baseline for level alignment */
+        align-items: baseline; /* Aligns items at baseline to fix height mismatch */
         margin: 0;
         padding: 0;
       }
@@ -59,6 +58,14 @@
         padding: 1rem;
         max-width: 100%;
       }
+    }
+    .article-card {
+      background-color: #2d2d2d;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -78,12 +85,17 @@
     <!-- Main Content -->
     <main class="main-content">
       <section>
-        <h1 class="text-6xl font-bold mb-12">Projects</h1>
+        <h1 class="text-4xl font-bold mb-12">Projects</h1>
         <div class="space-y-8">
           <div>
-            <h2 class="text-xl font-bold">Still building this page... &#10084</h2>
+            <div class="space-y-6">
+              <div class="article-card" onclick="window.open('', '_blank')">
+                <p class="text-2xl font-bold mb-2">placeholder</p>
+                <p class="text-sm text-gray-400 mb-2">June 2025</p>
+                <p class="text-lg">i am still working on this page blah blah blah blah blah blah blah </p>
+              </div>
+            </div>
           </div>
-
         </div>
       </section>
     </main>
