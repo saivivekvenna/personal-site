@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="styles.css">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sai Venna - Projects</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/examples/js/loaders/GLTFLoader.js"></script>
   <style>
     body {
       background-color: #1a1a1a;
@@ -28,6 +32,55 @@
       margin-right: auto;
       padding: 3rem 1rem;
     }
+    .article-card {
+      background-color: #2d2d2d;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-card.expanded {
+      transform: scale(1.05);
+      max-width: 100%;
+      z-index: 10;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+    .card-content {
+      display: none;
+      margin-top: 1rem;
+    }
+    .article-card.expanded .card-content {
+      display: block;
+    }
+    .canvas-container {
+      width: 100%;
+      height: 300px;
+      margin-top: 1rem;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .canvas-container canvas {
+      width: 100%;
+      height: 100%;
+    }
+    .github-link {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #3a3a3a;
+      color: #e5e5e5;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+    .github-link:hover {
+      background-color: #4a4a4a;
+    }
     @media (max-width: 640px) {
       .container {
         flex-direction: column;
@@ -47,25 +100,23 @@
         flex-direction: row;
         justify-content: center;
         gap: 1.5rem;
-        align-items: baseline; /* Aligns items at baseline to fix height mismatch */
+        align-items: baseline;
         margin: 0;
         padding: 0;
       }
       .sidebar .nav-tabs ul li a {
-        padding: 0.25rem 0; /* Uniform vertical padding to stabilize height */
+        padding: 0.25rem 0;
       }
       .main-content {
         padding: 1rem;
         max-width: 100%;
       }
-    }
-    .article-card {
-      background-color: #2d2d2d;
-      border: 1px solid #3a3a3a;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      cursor: pointer;
+      .article-card.expanded {
+        transform: scale(1.02);
+      }
+      .canvas-container {
+        height: 200px;
+      }
     }
   </style>
 </head>
@@ -75,9 +126,9 @@
     <aside class="sidebar">
       <nav class="nav-tabs">
         <ul class="flex flex-col space-y-4">
-          <li><a href="index.html" class="text-lg hover:underline">Home</a></li>
-          <li><a href="projects.html" class="text-lg hover:underline">Projects</a></li>
-          <li><a href="writing.html" class="text-lg hover:underline">Writing</a></li>
+          <li><a href="index.html" class="text-lg hover:underline">home</a></li>
+          <li><a href="projects.html" class="text-lg hover:underline">projects</a></li>
+          <li><a href="writing.html" class="text-lg hover:underline">writing</a></li>
         </ul>
       </nav>
     </aside>
@@ -89,10 +140,17 @@
         <div class="space-y-8">
           <div>
             <div class="space-y-6">
-              <div class="article-card" onclick="window.open('', '_blank')">
-                <p class="text-2xl font-bold mb-2">placeholder</p>
+              <div class="article-card" data-canvas-id="canvas1">
+                <p class="text-2xl font-bold mb-2">test</p>
                 <p class="text-sm text-gray-400 mb-2">June 2025</p>
-                <p class="text-lg">i am still working on this page blah blah blah blah blah blah blah </p>
+                <p class="text-lg">test</p>
+                <div class="card-content">
+                  <div class="canvas-container">
+                    <canvas id="canvas1"></canvas>
+                  </div>
+                  <a href="https://github.com/yourusername/quadruped-robot" target="_blank" class="github-link">View on GitHub</a>
+                  <p class="text-lg mt-4">This project involves building a quadruped robot with linear actuation, inspired by the TARS robot from Interstellar. The design focuses on modularity and adaptability, using advanced object detection to navigate dynamic environments. The 3D model displayed is a representation of the robot's structure, showcasing its mechanical design.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -100,5 +158,122 @@
       </section>
     </main>
   </div>
+
+  <script>
+    // Handle card expansion
+    document.querySelectorAll('.article-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const isExpanded = card.classList.contains('expanded');
+        document.querySelectorAll('.article-card').forEach(c => {
+          c.classList.remove('expanded');
+          const canvas = document.getElementById(c.dataset.canvasId);
+          if (canvas) canvas.style.display = 'none';
+        });
+        if (!isExpanded) {
+          card.classList.add('expanded');
+          const canvas = document.getElementById(card.dataset.canvasId);
+          if (canvas) {
+            canvas.style.display = 'block';
+            initThreeJS(card.dataset.canvasId);
+          }
+        }
+      });
+    });
+
+    // Three.js setup for 3D model
+    function initThreeJS(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
+        console.error(`Element with ID ${canvasId} is not a canvas element`);
+        return;
+      }
+
+      // Scene setup
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      renderer.setClearColor(0x2d2d2d);
+
+      // Lighting
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+      directionalLight.position.set(0, 1, 1);
+      scene.add(directionalLight);
+
+      // Load GLTF model
+      const loader = new THREE.GLTFLoader();
+      loader.load(
+        './models/Master_v6.gltf', // Path to renamed GLTF file
+        (gltf) => {
+          const model = gltf.scene;
+          scene.add(model);
+
+          // Center and scale the model
+          const box = new THREE.Box3().setFromObject(model);
+          const center = box.getCenter(new THREE.Vector3());
+          const size = box.getSize(new THREE.Vector3());
+          const maxDim = Math.max(size.x, size.y, size.z);
+          const scale = 300 / maxDim; // Adjust scale if needed
+          model.scale.set(scale, scale, scale);
+          model.position.sub(center.multiplyScalar(scale));
+
+          // Camera positioning
+          camera.position.z = maxDim * 0.5; // Adjust if model is too close/far
+
+          // Mouse interaction
+          let isDragging = false;
+          let previousMousePosition = { x: 0, y: 0 };
+
+          canvas.addEventListener('mousedown', (event) => {
+            isDragging = true;
+            previousMousePosition = { x: event.clientX, y: event.clientY };
+          });
+
+          canvas.addEventListener('mousemove', (event) => {
+            if (isDragging) {
+              const deltaMove = {
+                x: event.clientX - previousMousePosition.x,
+                y: event.clientY - previousMousePosition.y
+              };
+              model.rotation.y += deltaMove.x * 0.005;
+              model.rotation.x += deltaMove.y * 0.005;
+              previousMousePosition = { x: event.clientX, y: event.clientY };
+            }
+          });
+
+          canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+          });
+
+          canvas.addEventListener('mouseleave', () => {
+            isDragging = false;
+          });
+
+          // Animation loop
+          function animate() {
+            requestAnimationFrame(animate);
+            if (!isDragging) {
+              model.rotation.y += 0.005; // Auto-rotate when not dragging
+            }
+            renderer.render(scene, camera);
+          }
+          animate();
+        },
+        undefined,
+        (error) => {
+          console.error('Error loading GLTF model:', error);
+        }
+      );
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+      });
+    }
+  </script>
 </body>
 </html>
