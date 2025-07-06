@@ -1,150 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Venna - Writing</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      background-color: #1a1a1a;
-      color: #e5e5e5;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-    }
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 12rem;
-      padding: 3rem 1.5rem;
-    }
-    .main-content {
-      flex-grow: 1;
-      max-width: 48rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 3rem 1rem;
-    }
-    @media (max-width: 640px) {
-      .container {
-        flex-direction: column;
-        max-width: 100%;
-      }
-      .sidebar {
-        width: 100%;
-        padding: 0;
-      }
-      .sidebar .nav-tabs {
-        background-color: #2d2d2d;
-        border-bottom: 1px solid #3a3a3a;
-        padding: 0.5rem 1rem;
-        text-align: center;
-      }
-      .sidebar .nav-tabs ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
-        align-items: baseline; /* Aligns items at baseline to fix height mismatch */
-        margin: 0;
-        padding: 0;
-      }
-      .sidebar .nav-tabs ul li a {
-        padding: 0.25rem 0; /* Uniform vertical padding to stabilize height */
-      }
-      .main-content {
-        padding: 1rem;
-        max-width: 100%;
-      }
-    }
-    .article-card {
-      background-color: #2d2d2d;
-      border: 1px solid #3a3a3a;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .article-card:hover {
-      transform: translateY(-5px); /* Lift the card up by 5px */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add a subtle shadow for depth */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing - Sai Venna</title>
+    <link rel="icon" type="image/png" href="/tab_icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Page transition animation */
+        .page-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        /* Card hover animation */
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+        }
+        /* Match reference site colors */
+        body {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+        }
+        a {
+            color: #3b82f6; /* Tailwind's blue-500 */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <nav class="nav-tabs">
-        <ul class="flex flex-col space-y-4">
-          <li><a href="index.html" class="text-lg hover:underline">home</a></li>
-          <li><a href="projects.html" class="text-lg hover:underline">projects</a></li>
-          <li><a href="writing.html" class="text-lg hover:underline">writing</a></li>
-        </ul>
-      </nav>
-    </aside>
+<body class="w-full p-6 sm:p-10 md:p-14 text-sm sm:text-[15px] md:text-base leading-6 sm:leading-7 md:leading-7 antialiased">
+    <div class="flex flex-col md:flex-row">
+        <!-- Navigation -->
+        <nav class="md:mr-14 w-full md:w-16">
+            <ul class="lowercase text-right md:sticky md:top-10 md:block flex gap-2 justify-end mb-6 md:mb-0">
+                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
+                    <a class="nav-link inline-block w-full px-2" href="index.html">Home</a>
+                </li>
+                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
+                    <a class="nav-link inline-block w-full px-2" href="projects.html">Projects</a>
+                </li>
+                <li class="text-white font-semibold -mx-2">
+                    <a class="nav-link inline-block w-full px-2 hover:text-blue-500 transition-colors" href="writing.html">Writing</a>
+                </li>
+            </ul>
+        </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <section>
-        <h1 class="text-4xl font-bold mb-12">Writing</h1>
-        <div class="space-y-8">
-          <div>
-            <div class="space-y-6">
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/the-dance-between-tenacity-and-pragmatism-fe09403643ad', '_blank')">
-                <p class="text-2xl font-bold mb-2">The Dance Between Tenacity and Pragmatism</p>
-                <p class="text-sm text-gray-400 mb-2">June 2025</p>
-                <p class="text-lg">A reflection on balancing persistence with practical decision-making in personal and professional pursuits.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/so-i-made-an-app-d81f358c3447', '_blank')">
-                <p class="text-2xl font-bold mb-2">So I made an app.</p>
-                <p class="text-sm text-gray-400 mb-2">May 2025</p>
-                <p class="text-lg">A discussion about the process and challenges of developing an app over the past month.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/reflection-frc-44d57d60c11b', '_blank')">
-                <p class="text-2xl font-bold mb-2">Reflection: FRC</p>
-                <p class="text-sm text-gray-400 mb-2">April 2025</p>
-                <p class="text-lg">A personal take on experiences and lessons learned from participating in the FIRST Robotics Competition.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/progress-on-my-version-of-tars-feaa90a65285', '_blank')">
-                <p class="text-2xl font-bold mb-2">Progress on My Version of TARS</p>
-                <p class="text-sm text-gray-400 mb-2">March 2025</p>
-                <p class="text-lg">An update on building a robot inspired by Interstellar’s TARS, detailing design and progress.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/creating-a-linearly-actuated-robot-arm-pt-2-a7c9d2228a5b', '_blank')">
-                <p class="text-2xl font-bold mb-2">Creating a Linearly Actuated Robot Arm Pt. 2</p>
-                <p class="text-sm text-gray-400 mb-2">February 2025</p>
-                <p class="text-lg">The second part of a series on designing and constructing a robot arm with linear actuation.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/creating-a-linear-actuated-robot-arm-pt-1-1d36071ea9fe', '_blank')">
-                <p class="text-2xl font-bold mb-2">Creating a Linearly Actuated Robot Arm Pt. 1</p>
-                <p class="text-sm text-gray-400 mb-2">January 2025</p>
-                <p class="text-lg">The first part of a series, exploring the initial design and concepts for a linearly actuated robot arm.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/quadruped-robot-inspired-by-interstellars-tars-ee95983e94a6', '_blank')">
-                <p class="text-2xl font-bold mb-2">Quadruped Robot Inspired by Interstellar’s TARS</p>
-                <p class="text-sm text-gray-400 mb-2">December 2024</p>
-                <p class="text-lg">A project overview of a quadruped robot modeled after the TARS robot from Interstellar.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/using-object-detection-to-allow-robots-to-be-more-adaptive-to-their-environment-4fa89852cb2c', '_blank')">
-                <p class="text-2xl font-bold mb-2">Using Object Detection to Allow Robots to Be More Adaptive</p>
-                <p class="text-sm text-gray-400 mb-2">November 2024</p>
-                <p class="text-lg">An exploration of how object detection enhances robotic adaptability in dynamic environments.</p>
-              </div>
-              <div class="article-card" onclick="window.open('https://medium.com/@saivivekvenna/exploring-environments-beyond-imagination-soft-robotics-and-ai-revolutionizing-exploration-ff8bcb88f670', '_blank')">
-                <p class="text-2xl font-bold mb-2">Exploring Environments Beyond Imagination</p>
-                <p class="text-sm text-gray-400 mb-2">October 2024</p>
-                <p class="text-lg">A look at how soft robotics and AI are transforming exploration in challenging terrains.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+        <!-- Main Content -->
+        <main class="relative flex-1 max-w-2xl page-content fade-in">
+            <!-- Vertical Bar -->
+            <div class="absolute w-px h-full bg-[#3a3a3a] left-0 md:opacity-100 opacity-50"></div>
+
+            <article class="pl-0 md:pl-14 pt-6 md:pt-0">
+                <h1 class="font-semibold mb-7 text-white text-balance text-xl">Writing</h1>
+                <section>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/the-dance-between-tenacity-and-pragmatism-fe09403643ad" target="_blank" rel="noopener noreferrer" class="hover:underline">The Dance Between Tenacity and Pragmatism</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">June 2025</p>
+                        <p class="mt-2">A reflection on balancing persistence with practical decision-making in personal and professional pursuits.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/so-i-made-an-app-d81f358c3447" target="_blank" rel="noopener noreferrer" class="hover:underline">So I made an app.</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">May 2025</p>
+                        <p class="mt-2">A discussion about the process and challenges of developing an app over the past month.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/reflection-frc-44d57d60c11b" target="_blank" rel="noopener noreferrer" class="hover:underline">Reflection: FRC</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">April 2025</p>
+                        <p class="mt-2">A personal take on experiences and lessons learned from participating in the FIRST Robotics Competition.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/progress-on-my-version-of-tars-feaa90a65285" target="_blank" rel="noopener noreferrer" class="hover:underline">Progress on My Version of TARS</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">March 2025</p>
+                        <p class="mt-2">An update on building a robot inspired by Interstellar’s TARS, detailing design and progress.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/creating-a-linearly-actuated-robot-arm-pt-2-a7c9d2228a5b" target="_blank" rel="noopener noreferrer" class="hover:underline">Creating a Linearly Actuated Robot Arm Pt. 2</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">February 2025</p>
+                        <p class="mt-2">The second part of a series on designing and constructing a robot arm with linear actuation.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/creating-a-linear-actuated-robot-arm-pt-1-1d36071ea9fe" target="_blank" rel="noopener noreferrer" class="hover:underline">Creating a Linearly Actuated Robot Arm Pt. 1</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">January 2025</p>
+                        <p class="mt-2">The first part of a series, exploring the initial design and concepts for a linearly actuated robot arm.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/quadruped-robot-inspired-by-interstellars-tars-ee95983e94a6" target="_blank" rel="noopener noreferrer" class="hover:underline">Quadruped Robot Inspired by Interstellar’s TARS</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">December 2024</p>
+                        <p class="mt-2">A project overview of a quadruped robot modeled after the TARS robot from Interstellar.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/using-object-detection-to-allow-robots-to-be-more-adaptive-to-their-environment-4fa89852cb2c" target="_blank" rel="noopener noreferrer" class="hover:underline">Using Object Detection to Allow Robots to Be More Adaptive</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">November 2024</p>
+                        <p class="mt-2">An exploration of how object detection enhances robotic adaptability in dynamic environments.</p>
+                    </div>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">
+                            <a href="https://medium.com/@saivivekvenna/exploring-environments-beyond-imagination-soft-robotics-and-ai-revolutionizing-exploration-ff8bcb88f670" target="_blank" rel="noopener noreferrer" class="hover:underline">Exploring Environments Beyond Imagination</a>
+                        </h2>
+                        <p class="text-gray-400 text-sm">October 2024</p>
+                        <p class="mt-2">A look at how soft robotics and AI are transforming exploration in challenging terrains.</p>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        // Page transition effect
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                document.querySelector('.page-content').classList.remove('fade-in');
+                document.querySelector('.page-content').classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+
+        // Ensure fade-in on page load
+        window.addEventListener('load', () => {
+            const content = document.querySelector('.page-content');
+            content.classList.remove('fade-out');
+            content.classList.add('fade-in');
+        });
+    </script>
 </body>
 </html>

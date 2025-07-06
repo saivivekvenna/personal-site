@@ -1,111 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Venna</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      background-color: #1a1a1a;
-      color: #e5e5e5;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-    }
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 12rem;
-      padding: 3rem 1.5rem;
-    }
-    .main-content {
-      flex-grow: 1;
-      max-width: 48rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 3rem 1rem;
-    }
-    @media (max-width: 640px) {
-      .container {
-        flex-direction: column;
-        max-width: 100%;
-      }
-      .sidebar {
-        width: 100%;
-        padding: 0; 
-      }
-      .sidebar .nav-tabs {
-        border-bottom: 1px solid #3a3a3a;
-        padding: 1rem 1rem;
-        text-align: center;
-      }
-      .sidebar .nav-tabs ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
-        align-items: baseline; /* Changed to baseline for level alignment */
-        margin: 0;
-        padding: 0;
-      }
-      .sidebar .nav-tabs ul li a {
-        padding: 0.25rem 0; /* Uniform vertical padding to stabilize height */
-      }
-      .main-content {
-        padding: 1rem;
-        max-width: 100%;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Venna</title>
+    <link rel="icon" type="image/png" href="/tab_icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Page transition animation */
+        .page-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        /* Card hover animation */
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+        }
+        /* Match reference site colors */
+        body {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+        }
+        a {
+            color: #3b82f6; /* Tailwind's blue-500 */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <nav class="nav-tabs">
-        <ul class="flex flex-col space-y-4">
-          <li><a href="index.html" class="text-lg hover:underline">home</a></li>
-          <li><a href="projects.html" class="text-lg hover:underline">projects</a></li>
-          <li><a href="writing.html" class="text-lg hover:underline">writing</a></li>
-        </ul>
-      </nav>
-    </aside>
+<body class="w-full p-6 sm:p-10 md:p-14 text-sm sm:text-[15px] md:text-base leading-6 sm:leading-7 md:leading-7 antialiased">
+    <div class="flex flex-col md:flex-row">
+        <!-- Navigation -->
+        <nav class="md:mr-14 w-full md:w-16">
+            <ul class="lowercase text-right md:sticky md:top-10 md:block flex gap-2 justify-end mb-6 md:mb-0">
+                <li class="text-white font-semibold -mx-2">
+                    <a class="nav-link inline-block w-full px-2 hover:text-blue-500 transition-colors" href="index.html">Home</a>
+                </li>
+                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
+                    <a class="nav-link inline-block w-full px-2" href="projects.html">Projects</a>
+                </li>
+                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
+                    <a class="nav-link inline-block w-full px-2" href="writing.html">Writing</a>
+                </li>
+            </ul>
+        </nav>
 
-<!-- Main Content -->
-<main class="main-content">
-  <section>
-    <h1 class="text-4xl font-bold mb-12">Sai Venna</h1>
-    <div class="space-y-8">
-      <div>
-        <h2 class="text-xl font-bold mb-2">Some things about me:</h2>
-        <ul class="list-disc list-inside text-lg">
-          <li class="mb-2">I love creating [writing, robots, software, startups].</li>
-          <li class="mb-2">Incoming @ the University Of Toronto ECE</li>
-          <li class="mb-2">I believe human prosperity is greatly dependant on how we use robots and AI.</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-xl font-bold mb-2">Things I'm interested in:</h2>
-        <ul class="list-disc list-inside text-lg">
-          <li class="mb-2">Robotics/ AI.</li>
-          <li class="mb-2">Mining. The starting point for our most important supply chains such as energy and technology. A greener future also grows our dependance on mining.</li>
-          <li class="mb-2">Economics. The teachings expand beyond the markets and how humans interact on a large scale. It's also a strong tell towards where society is moving.</li>
-          <li class="mb-2">I love learning from people who are obsessed and see a beauty in their field. I like to learn about new ideas that can change our world [definite optimism].</li>
-          <li class="mb-2">Basketball. Heat Nation.</li>
-          <li class="mb-2">Movies, Books, TV Shows, Podcasts</li>
-        </ul>
-      </div>
+        <!-- Main Content -->
+        <main class="relative flex-1 max-w-2xl page-content fade-in">
+            <!-- Vertical Bar -->
+            <div class="absolute w-px h-full bg-[#3a3a3a] left-0 md:opacity-100 opacity-50"></div>
+
+            <article class="pl-0 md:pl-14 pt-6 md:pt-0">
+                <h1 class="font-semibold mb-7 text-white text-balance text-xl">Sai Venna</h1>
+                <section>
+                    <h2 class="font-semibold mb-4 text-white">Some things about me:</h2>
+                    <ul class="list-disc pl-5 mt-7">
+                        <li>I love creating [writing, robots, software, startups].</li>
+                        <li>Incoming @ the University Of Toronto ECE</li>
+                        <li>I believe human prosperity is greatly dependent on how we use robots and AI.</li>
+                    </ul>
+                </section>
+                <section class="mt-7">
+                    <h2 class="font-semibold mb-4 text-white">Things I'm interested in:</h2>
+                    <ul class="list-disc pl-5 mt-7">
+                        <li>Robotics/ AI.</li>
+                        <li>Mining. The starting point for our most important supply chains such as energy and technology. A greener future also grows our dependence on mining.</li>
+                        <li>Economics. The teachings expand beyond the markets and how humans interact on a large scale. It's also a strong tell towards where society is moving.</li>
+                        <li>I love learning from people who are obsessed and see a beauty in their field. I like to learn about new ideas that can change our world [definite optimism].</li>
+                        <li>Basketball. Heat Nation.</li>
+                        <li>Movies, Books, TV Shows, Podcasts</li>
+                    </ul>
+                </section>
+                <section class="mt-7">
+                    <h2 class="font-semibold mb-4 text-white">Contact</h2>
+                    <p>Hit me up via email at <a class="hover:underline" href="mailto:saivivekvenna@gmail.com">saivivekvenna@gmail.com</a>.</p>
+                </section>
+            </article>
+        </main>
     </div>
-  </section>
 
-  <section class="mt-12">
-    <h2 class="text-xl font-bold mb-2">Contact</h2>
-    <p class="text-lg">Hit me up via email at <a href="mailto:saivivekvenna@gmail.com" class="underline">saivivekvenna@gmail.com</a>.</p>
-  </section>
-</main>
-  </div>
+    <script>
+        // Page transition effect
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                document.querySelector('.page-content').classList.remove('fade-in');
+                document.querySelector('.page-content').classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            });
+        });
+
+        // Ensure fade-in on page load
+        window.addEventListener('load', () => {
+            const content = document.querySelector('.page-content');
+            content.classList.remove('fade-out');
+            content.classList.add('fade-in');
+        });
+    </script>
 </body>
 </html>

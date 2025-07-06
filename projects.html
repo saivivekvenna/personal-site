@@ -1,279 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="styles.css">
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sai Venna - Projects</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/examples/js/loaders/GLTFLoader.js"></script>
-  <style>
-    body {
-      background-color: #1a1a1a;
-      color: #e5e5e5;
-      font-family: 'Inter', sans-serif;
-      margin: 0;
-      overflow-x: hidden;
-    }
-    .container {
-      display: flex;
-      min-height: 100vh;
-    }
-    .sidebar {
-      width: 12rem;
-      padding: 3rem 1.5rem;
-    }
-    .main-content {
-      flex-grow: 1;
-      max-width: 48rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 3rem 1rem;
-    }
-    .article-card {
-      background-color: #2d2d2d;
-      border: 1px solid #3a3a3a;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-      position: relative;
-      overflow: hidden;
-    }
-    .article-card.expanded {
-      transform: scale(1.05);
-      max-width: 100%;
-      z-index: 10;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    }
-    .card-content {
-      display: none;
-      margin-top: 1rem;
-    }
-    .article-card.expanded .card-content {
-      display: block;
-    }
-    .canvas-container {
-      width: 100%;
-      height: 300px;
-      margin-top: 1rem;
-      border: 1px solid #3a3a3a;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .canvas-container canvas {
-      width: 100%;
-      height: 100%;
-    }
-    .github-link {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #3a3a3a;
-      color: #e5e5e5;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
-    }
-    .github-link:hover {
-      background-color: #4a4a4a;
-    }
-    @media (max-width: 640px) {
-      .container {
-        flex-direction: column;
-        max-width: 100%;
-      }
-      .sidebar {
-        width: 100%;
-        padding: 0;
-      }
-      .sidebar .nav-tabs {
-        border-bottom: 1px solid #3a3a3a;
-        padding: 0.5rem 1rem;
-        text-align: center;
-      }
-      .sidebar .nav-tabs ul {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 1.5rem;
-        align-items: baseline;
-        margin: 0;
-        padding: 0;
-      }
-      .sidebar .nav-tabs ul li a {
-        padding: 0.25rem 0;
-      }
-      .main-content {
-        padding: 1rem;
-        max-width: 100%;
-      }
-      .article-card.expanded {
-        transform: scale(1.02);
-      }
-      .canvas-container {
-        height: 200px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Sai Venna</title>
+    <link rel="icon" type="image/png" href="/tab_icon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Page transition animation */
+        .page-content {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        .fade-in {
+            opacity: 1;
+        }
+        /* Card hover animation */
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+        }
+        /* Match reference site colors */
+        body {
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+            font-family: 'Inter', sans-serif;
+        }
+        a {
+            color: #3b82f6; /* Tailwind's blue-500 */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <!-- Sidebar Navigation -->
-    <aside class="sidebar">
-      <nav class="nav-tabs">
-        <ul class="flex flex-col space-y-4">
-          <li><a href="index.html" class="text-lg hover:underline">home</a></li>
-          <li><a href="projects.html" class="text-lg hover:underline">projects</a></li>
-          <li><a href="writing.html" class="text-lg hover:underline">writing</a></li>
-        </ul>
-      </nav>
-    </aside>
+<body class="w-full p-6 sm:p-10 md:p-14 text-sm sm:text-[15px] md:text-base leading-6 sm:leading-7 md:leading-7 antialiased">
+    <div class="flex flex-col md:flex-row">
+        <!-- Navigation -->
+        <nav class="md:mr-14 w-full md:w-16">
+            <ul class="lowercase text-right md:sticky md:top-10 md:block flex gap-2 justify-end mb-6 md:mb-0">
+                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
+                    <a class="nav-link inline-block w-full px-2" href="index.html">Home</a>
+                </li>
+                <li class="text-white font-semibold -mx-2">
+                    <a class="nav-link inline-block w-full px-2 hover:text-blue-500 transition-colors" href="projects.html">Projects</a>
+                </li>
+                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
+                    <a class="nav-link inline-block w-full px-2" href="writing.html">Writing</a>
+                </li>
+            </ul>
+        </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <section>
-        <h1 class="text-4xl font-bold mb-12">Projects</h1>
-        <div class="space-y-8">
-          <div>
-            <div class="space-y-6">
-              <div class="article-card" data-canvas-id="canvas1">
-                <p class="text-2xl font-bold mb-2">test</p>
-                <p class="text-sm text-gray-400 mb-2">June 2025</p>
-                <p class="text-lg">test</p>
-                <div class="card-content">
-                  <div class="canvas-container">
-                    <canvas id="canvas1"></canvas>
-                  </div>
-                  <a href="https://github.com/yourusername/quadruped-robot" target="_blank" class="github-link">View on GitHub</a>
-                  <p class="text-lg mt-4">This project involves building a quadruped robot with linear actuation, inspired by the TARS robot from Interstellar. The design focuses on modularity and adaptability, using advanced object detection to navigate dynamic environments. The 3D model displayed is a representation of the robot's structure, showcasing its mechanical design.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+        <!-- Main Content -->
+        <main class="relative flex-1 max-w-2xl page-content fade-in">
+            <!-- Vertical Bar -->
+            <div class="absolute w-px h-full bg-[#3a3a3a] left-0 md:opacity-100 opacity-50"></div>
 
-  <script>
-    // Handle card expansion
-    document.querySelectorAll('.article-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const isExpanded = card.classList.contains('expanded');
-        document.querySelectorAll('.article-card').forEach(c => {
-          c.classList.remove('expanded');
-          const canvas = document.getElementById(c.dataset.canvasId);
-          if (canvas) canvas.style.display = 'none';
+            <article class="pl-0 md:pl-14 pt-6 md:pt-0">
+                <h1 class="font-semibold mb-7 text-white text-balance text-xl">Projects</h1>
+                <section>
+                    <div class="card mt-7 border border-[#3a3a3a] rounded-md p-4 bg-[#1a1a1a]">
+                        <h2 class="font-semibold text-white">test</h2>
+                        <p class="text-gray-400 text-sm">June 2025</p>
+                        <p class="mt-2">test</p>
+                        <p class="mt-4">This project involves building a quadruped robot with linear actuation, inspired by the TARS robot from Interstellar. The design focuses on modularity and adaptability, using advanced object detection to navigate dynamic environments. The 3D model displayed is a representation of the robot's structure, showcasing its mechanical design.</p>
+                        <a class="mt-2 inline-block" href="#" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                    </div>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <script>
+        // Page transition effect
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                document.querySelector('.page-content').classList.remove('fade-in');
+                document.querySelector('.page-content').classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            });
         });
-        if (!isExpanded) {
-          card.classList.add('expanded');
-          const canvas = document.getElementById(card.dataset.canvasId);
-          if (canvas) {
-            canvas.style.display = 'block';
-            initThreeJS(card.dataset.canvasId);
-          }
-        }
-      });
-    });
 
-    // Three.js setup for 3D model
-    function initThreeJS(canvasId) {
-      const canvas = document.getElementById(canvasId);
-      if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-        console.error(`Element with ID ${canvasId} is not a canvas element`);
-        return;
-      }
-
-      // Scene setup
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-      renderer.setClearColor(0x2d2d2d);
-
-      // Lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(ambientLight);
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-      directionalLight.position.set(0, 1, 1);
-      scene.add(directionalLight);
-
-      // Load GLTF model
-      const loader = new THREE.GLTFLoader();
-      loader.load(
-        './models/Master_v6.gltf', // Path to renamed GLTF file
-        (gltf) => {
-          const model = gltf.scene;
-          scene.add(model);
-
-          // Center and scale the model
-          const box = new THREE.Box3().setFromObject(model);
-          const center = box.getCenter(new THREE.Vector3());
-          const size = box.getSize(new THREE.Vector3());
-          const maxDim = Math.max(size.x, size.y, size.z);
-          const scale = 300 / maxDim; // Adjust scale if needed
-          model.scale.set(scale, scale, scale);
-          model.position.sub(center.multiplyScalar(scale));
-
-          // Camera positioning
-          camera.position.z = maxDim * 0.5; // Adjust if model is too close/far
-
-          // Mouse interaction
-          let isDragging = false;
-          let previousMousePosition = { x: 0, y: 0 };
-
-          canvas.addEventListener('mousedown', (event) => {
-            isDragging = true;
-            previousMousePosition = { x: event.clientX, y: event.clientY };
-          });
-
-          canvas.addEventListener('mousemove', (event) => {
-            if (isDragging) {
-              const deltaMove = {
-                x: event.clientX - previousMousePosition.x,
-                y: event.clientY - previousMousePosition.y
-              };
-              model.rotation.y += deltaMove.x * 0.005;
-              model.rotation.x += deltaMove.y * 0.005;
-              previousMousePosition = { x: event.clientX, y: event.clientY };
-            }
-          });
-
-          canvas.addEventListener('mouseup', () => {
-            isDragging = false;
-          });
-
-          canvas.addEventListener('mouseleave', () => {
-            isDragging = false;
-          });
-
-          // Animation loop
-          function animate() {
-            requestAnimationFrame(animate);
-            if (!isDragging) {
-              model.rotation.y += 0.005; // Auto-rotate when not dragging
-            }
-            renderer.render(scene, camera);
-          }
-          animate();
-        },
-        undefined,
-        (error) => {
-          console.error('Error loading GLTF model:', error);
-        }
-      );
-
-      // Handle window resize
-      window.addEventListener('resize', () => {
-        camera.aspect = canvas.clientWidth / canvas.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-      });
-    }
-  </script>
+        // Ensure fade-in on page load
+        window.addEventListener('load', () => {
+            const content = document.querySelector('.page-content');
+            content.classList.remove('fade-out');
+            content.classList.add('fade-in');
+        });
+    </script>
 </body>
 </html>
