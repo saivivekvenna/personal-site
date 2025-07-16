@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,41 +13,52 @@
         .page-content {
             transition: opacity 0.3s ease-in-out;
         }
+
         .fade-out {
             opacity: 0;
         }
+
         .fade-in {
             opacity: 1;
         }
+
         /* Card hover animation */
         .card {
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
+
         .card:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
         }
+
         /* Match reference site colors */
         body {
             background-color: #1a1a1a;
             color: #e5e5e5;
             font-family: 'Inter', sans-serif;
         }
+
         a {
-            color: #3b82f6; /* Tailwind's blue-500 */
+            color: #3b82f6;
+            /* Tailwind's blue-500 */
         }
+
         a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
-<body class="w-full p-6 sm:p-10 md:p-14 text-sm sm:text-[15px] md:text-base leading-6 sm:leading-7 md:leading-7 antialiased">
+
+<body
+    class="w-full p-6 sm:p-10 md:p-14 text-sm sm:text-[15px] md:text-base leading-6 sm:leading-7 md:leading-7 antialiased">
     <div class="flex flex-col md:flex-row">
         <!-- Navigation -->
         <nav class="md:mr-14 w-full md:w-16">
             <ul class="lowercase text-right md:sticky md:top-10 md:block flex gap-2 justify-end mb-6 md:mb-0">
                 <li class="text-white font-semibold -mx-2">
-                    <a class="nav-link inline-block w-full px-2 hover:text-blue-500 transition-colors" href="index.html">Home</a>
+                    <a class="nav-link inline-block w-full px-2 hover:text-blue-500 transition-colors"
+                        href="index.html">Home</a>
                 </li>
                 <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
                     <a class="nav-link inline-block w-full px-2" href="projects.html">Projects</a>
@@ -60,7 +72,7 @@
         <!-- Main Content -->
         <main class="relative flex-1 max-w-2xl page-content fade-in">
             <!-- Vertical Bar -->
-            <div class="absolute w-px h-full bg-[#3a3a3a] left-0 md:opacity-100 opacity-50"></div>
+            <div class="absolute w-px h-full bg-[#3a3a3a] left-0 hidden md:block"></div>
 
             <article class="pl-0 md:pl-14 pt-6 md:pt-0">
                 <h1 class="font-semibold mb-7 text-white text-balance text-xl">Sai Venna</h1>
@@ -69,23 +81,32 @@
                     <ul class="list-disc pl-5 mt-7">
                         <li>I love creating [writing, robots, software, startups].</li>
                         <li>Incoming @ the University Of Toronto ECE</li>
-                        <li>I believe human prosperity is greatly dependent on how we use robots and AI.</li>
+                        <li>I believe AI & robots will be pivotal for our society and the well being of our world.</li>
                     </ul>
                 </section>
                 <section class="mt-7">
                     <h2 class="font-semibold mb-4 text-white">Things I'm interested in:</h2>
                     <ul class="list-disc pl-5 mt-7">
                         <li>Robotics/ AI.</li>
-                        <li>Mining. The starting point for our most important supply chains such as energy and technology. A greener future also grows our dependence on mining.</li>
-                        <li>Economics. The teachings expand beyond the markets and how humans interact on a large scale. It's also a strong tell towards where society is moving.</li>
-                        <li>I love learning from people who are obsessed and see a beauty in their field. I like to learn about new ideas that can change our world [definite optimism].</li>
+                        <li>Mining. The starting point for our most important supply chains such as energy and
+                            technology. A greener future also grows our dependence on mining.</li>
+                        <li>Economics. The teachings expand beyond the markets and how humans interact on a large scale.
+                            It's also a strong tell towards where society is moving.</li>
+                        <li>I love learning from people who are obsessed and see a beauty in their field. I like to
+                            learn about new ideas that can change our world [definite optimism].</li>
                         <li>Basketball. Heat Nation.</li>
                         <li>Movies, Books, TV Shows, Podcasts</li>
                     </ul>
                 </section>
                 <section class="mt-7">
                     <h2 class="font-semibold mb-4 text-white">Contact</h2>
-                    <p>Hit me up via email at <a class="hover:underline" href="mailto:saivivekvenna@gmail.com">saivivekvenna@gmail.com</a>.</p>
+                    <p>
+                        Find me on 
+                        <a class="hover:underline" href="https://medium.com/@saivivekvenna" target="_blank" rel="noopener noreferrer">Medium</a> or 
+                        <a class="hover:underline" href="https://www.linkedin.com/in/sai-vivek-venna-079355212/" target="_blank" rel="noopener noreferrer">LinkedIn</a> or 
+                        hit me up via email at 
+                        <a class="hover:underline" href="mailto:saivivekvenna@gmail.com" target="_blank" rel="noopener noreferrer">saivivekvenna@gmail.com</a>.
+                      </p>
                 </section>
             </article>
         </main>
@@ -113,4 +134,5 @@
         });
     </script>
 </body>
+
 </html>
