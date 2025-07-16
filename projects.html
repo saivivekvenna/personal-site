@@ -29,11 +29,22 @@
             box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
         }
         .card.collapsed {
-            height: 80px; /* Height for title, date, and category */
+            height: 100px; /* Increased height for mobile to fit title, date, category */
             padding: 1rem;
+        }
+        @media (min-width: 640px) {
+            .card.collapsed {
+                height: 80px; /* Revert to original height for larger screens */
+            }
         }
         .card.expanded {
             padding: 1.5rem;
+        }
+        /* Ensure summary and button-group are hidden in collapsed state */
+        .card.collapsed .summary,
+        .card.collapsed .button-group,
+        .card.collapsed .model-viewer-container {
+            display: none !important;
         }
         /* Match reference site colors */
         body {
@@ -42,7 +53,7 @@
             font-family: 'Inter', sans-serif;
         }
         a {
-            color: #3b82f6; /* Tailwind's blue-500 for general links */
+            color: #1a7318; /* Updated to match your nav link color */
         }
         a:hover {
             text-decoration: underline;
@@ -71,7 +82,7 @@
         }
         .button-group a:hover {
             background-color: #3a3a3a;
-            text-decoration: none; /* Remove underline on hover */
+            text-decoration: none;
         }
     </style>
 </head>
@@ -79,15 +90,20 @@
     <div class="flex flex-col md:flex-row">
         <!-- Navigation -->
         <nav class="md:mr-14 w-full md:w-16">
+            <style>
+                .nav-link:hover {
+                    color: #1a7318;
+                }
+            </style>
             <ul class="lowercase text-right md:sticky md:top-10 md:block flex gap-2 justify-end mb-6 md:mb-0">
-                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
-                    <a class="nav-link inline-block w-full px-2" href="index.html">Home</a>
-                </li>
                 <li class="text-white font-semibold -mx-2">
-                    <a class="nav-link inline-block w-full px-2 hover:text-blue-500 transition-colors" href="projects.html">Projects</a>
+                    <a class="nav-link inline-block w-full px-2 transition-colors" href="index.html">Home</a>
                 </li>
-                <li class="text-[#e5e5e5] hover:text-blue-500 transition-colors -mx-2">
-                    <a class="nav-link inline-block w-full px-2" href="writing.html">Writing</a>
+                <li class="text-[#e5e5e5] -mx-2">
+                    <a class="nav-link inline-block w-full px-2 transition-colors" href="projects.html">Projects</a>
+                </li>
+                <li class="text-[#e5e5e5] -mx-2">
+                    <a class="nav-link inline-block w-full px-2 transition-colors" href="writing.html">Writing</a>
                 </li>
             </ul>
         </nav>
@@ -101,10 +117,9 @@
                 <h1 class="flex justify-between items-center font-semibold mb-7 text-white text-balance text-xl">
                     <span>Projects</span>
                     <span class="opacity-50 text-sm text-gray-400">*click on project for more information*</span>
-                  </h1>              <section>
-
-
-                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a" onclick="toggleCard(event, this)">
+                </h1>
+                <section>
+                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a]" onclick="toggleCard(event, this)">
                         <h2 class="font-semibold text-white">Machine Learning Deep Dive</h2>
                         <p class="text-gray-400 text-sm">Present</p>
                         <p class="mt-2">ML</p>
@@ -112,34 +127,8 @@
                             <p>Deep dive into ML trying to learn as much as I can. Will update soon with my learnings.</p>
                         </div>
                     </div>
-                
-                    <!-- <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a]" onclick="toggleCard(event, this)">
-                        <div class="p-4">
-                            <h2 class="font-semibold text-white">6 Axis Robot Arm</h2>
-                            <p class="text-gray-400 text-sm">July 2025</p>
-                            <p class="mt-2">Robotics/ CAD</p>
-                            <div class="summary mt-4 hidden">
-                                <p>I built an app that takes in natural language queries and returns real-time houses for sale. I used the Flutter framework for the frontend and Node.js for the backend.</p>
-                            </div>
-                            <div class="model-viewer-container mt-4 hidden">
-                                <model-viewer
-                                    src="./Master%20v6.gltf"
-                                    alt="6 Axis Robot Arm 3D Model"
-                                    auto-rotate
-                                    camera-controls
-                                    ar
-                                    style="width: 100%; height: 300px; background-color: #2a2a2a; border-radius: 8px;"
-                                ></model-viewer>
-                            </div>
-                            <div class="button-group mt-4 hidden">
-                                <a href="https://github.com/saivivekvenna/estateAI" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">GitHub</a>
-                                <a href="https://www.loom.com/share/1bd2f79258d44d9bacfa568b6119ee3a" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Demo</a>
-                                <a href="https://medium.com/@saivivekvenna/so-i-made-an-app-d81f358c3447" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">Write Up</a>
-                            </div>
-                        </div>
-                    </div> -->
 
-                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a" onclick="toggleCard(event, this)">
+                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a]" onclick="toggleCard(event, this)">
                         <h2 class="font-semibold text-white">AI Real Estate App</h2>
                         <p class="text-gray-400 text-sm">April 2025</p>
                         <p class="mt-2">AI Human Interface/ App Design</p>
@@ -153,12 +142,12 @@
                         </div>
                     </div>
 
-                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a" onclick="toggleCard(event, this)">
+                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a]" onclick="toggleCard(event, this)">
                         <h2 class="font-semibold text-white">TARS Prototype</h2>
                         <p class="text-gray-400 text-sm">Jan 2025</p>
                         <p class="mt-2">Control Systems/ Robotics/ CAD</p>
                         <div class="summary mt-4">
-                            <p>I built the TARS robot from the movie Interstellar inorder to see if I could replicate the motion/ mechanics of the robot. </p>
+                            <p>I built the TARS robot from the movie Interstellar inorder to see if I could replicate the motion/ mechanics of the robot.</p>
                         </div>
                         <div class="button-group">
                             <a href="https://github.com/saivivekvenna/testWalkCode" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -166,7 +155,7 @@
                         </div>
                     </div>
 
-                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a" onclick="toggleCard(event, this)">
+                    <div class="card collapsed mt-7 border border-[#3a3a3a] rounded-md bg-[#1a1a1a]" onclick="toggleCard(event, this)">
                         <h2 class="font-semibold text-white">Linear Actuated Robot Arm</h2>
                         <p class="text-gray-400 text-sm">May 2024</p>
                         <p class="mt-2">Robotics/ CAD</p>
@@ -177,8 +166,6 @@
                             <a href="https://medium.com/@saivivekvenna/creating-a-linear-actuated-robot-arm-pt-1-1d36071ea9fe" target="_blank" rel="noopener noreferrer">Write Up</a>
                         </div>
                     </div>
-
-                    <!-- Additional cards can be added here with the same structure -->
                 </section>
             </article>
         </main>
@@ -207,24 +194,24 @@
 
         // Toggle card expansion
         function toggleCard(event, card) {
-            event.stopPropagation(); // Prevent click from bubbling to main
+            event.stopPropagation();
             const cards = document.querySelectorAll('.card');
             cards.forEach(c => {
                 if (c !== card && c.classList.contains('expanded')) {
                     c.classList.remove('expanded');
                     c.classList.add('collapsed');
-                    c.style.height = '80px'; // Reset to collapsed height
+                    c.style.height = window.innerWidth < 640 ? '100px' : '80px';
                 }
             });
 
             if (card.classList.contains('expanded')) {
                 card.classList.remove('expanded');
                 card.classList.add('collapsed');
-                card.style.height = '80px'; // Collapse to default height
+                card.style.height = window.innerWidth < 640 ? '100px' : '80px';
             } else {
                 card.classList.remove('collapsed');
                 card.classList.add('expanded');
-                const height = card.scrollHeight + 20; // Use natural height of content
+                const height = card.scrollHeight + 20;
                 card.style.height = `${height}px`;
             }
         }
@@ -236,7 +223,7 @@
                 if (card.classList.contains('expanded')) {
                     card.classList.remove('expanded');
                     card.classList.add('collapsed');
-                    card.style.height = '80px'; // Reset to collapsed height
+                    card.style.height = window.innerWidth < 640 ? '100px' : '80px';
                 }
             });
         }
